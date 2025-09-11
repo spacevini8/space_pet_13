@@ -11,5 +11,19 @@ config_version=5
 [application]
 
 config/name="Space Pet 13"
+run/main_scene="uid://jx55wc0xyylt"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1024
+window/size/viewport_height=1024
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
