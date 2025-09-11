@@ -1,3 +1,22 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+LICENSE
+addons/godot_super-wakatime/api_key_prompt.tscn
+addons/godot_super-wakatime/counter.tscn
+addons/godot_super-wakatime/decompressor.gd
+addons/godot_super-wakatime/decompressor.gd.uid
+addons/godot_super-wakatime/godot_super-wakatime.gd
+addons/godot_super-wakatime/godot_super-wakatime.gd.uid
+addons/godot_super-wakatime/heartbeat.gd
+addons/godot_super-wakatime/heartbeat.gd.uid
+addons/godot_super-wakatime/plugin.cfg
+addons/godot_super-wakatime/README.md
+addons/godot_super-wakatime/utils.gd
+addons/godot_super-wakatime/utils.gd.uid
+images/godotwaka.png
+images/godotwaka.png.import
+images/godotwaka2.png
+images/godotwaka2.png.import
+images/icon.jpg
+images/icon.jpg.import
