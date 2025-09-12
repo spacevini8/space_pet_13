@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://dvexq3a6trjln"]
+[gd_scene load_steps=14 format=3 uid="uid://dvexq3a6trjln"]
 
 [ext_resource type="Texture2D" uid="uid://bef7g8ck71av6" path="res://assets/sprites/erebus_sheet.bmp" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://8go7qq4otkln" path="res://scripts/player.gd" id="1_g2els"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("1_3vyb7")
@@ -73,9 +74,16 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
+radius = 89.0
+height = 258.0
+
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(128, 896)
 scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_d2wvv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_g2els")
