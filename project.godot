@@ -11,10 +11,10 @@ config_version=5
 [application]
 
 config/name="Space Pet 13"
-config/version="0.2β"
+config/version="0.2.1.0"
 run/main_scene="uid://jx55wc0xyylt"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://coon6wjw0fupy"
 
 [display]
 
