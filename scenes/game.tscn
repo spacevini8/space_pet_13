@@ -202,3 +202,8 @@ texture = ExtResource("8_0tnpc")
 [connection signal="new_round" from="Player" to="Machines" method="_on_new_round"]
 [connection signal="body_entered" from="New_Round" to="Player" method="_on_new_round_body_entered"]
 [connection signal="body_entered" from="Machines/AME" to="Machines" method="_on_ame_body_entered"]
+[connection signal="body_exited" from="Machines/AME" to="Machines" method="_on_ame_body_exited"]
+[connection signal="body_entered" from="Machines/Singulo" to="Machines" method="_on_singulo_body_entered"]
+[connection signal="body_exited" from="Machines/Singulo" to="Machines" method="_on_singulo_body_exited"]
+[connection signal="body_entered" from="Machines/Solar" to="Machines" method="_on_solar_body_entered"]
+[connection signal="body_exited" from="Machines/Solar" to="Machines" method="_on_solar_body_exited"]
