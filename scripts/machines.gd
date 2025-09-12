@@ -17,10 +17,15 @@ func _process(delta: float) -> void:
 func _on_new_round() -> void:
 	
 	if randi_range(1,2) == 2:
-		$AME/AME_Sprite.set_frame_and_progress(1, 1)
+		$AME/AME_Sprite.set_frame(1)
 		
 	if randi_range(1,2) == 2:
-		$Singulo/Singulo_Sprite.set_frame_and_progress(1, 1)
+		$Singulo/Singulo_Sprite.set_frame(1)
 		
 	if randi_range(1,2) == 2:
-		$Solar/Solar_Sprite.set_frame_and_progress(1, 1)
+		$Solar/Solar_Sprite.set_frame(1)
+
+
+func _on_ame_body_entered(body: Node2D) -> void:
+	if Input.is_action_just_pressed("Interact"):
+		$AME/AME_Sprite.set_frame(0)
