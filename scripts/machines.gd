@@ -3,10 +3,14 @@ extends Node
 @onready var ame_sprite: AnimatedSprite2D = $AME/AME_Sprite
 @onready var singulo_sprite: AnimatedSprite2D = $Singulo/Singulo_Sprite
 @onready var solar_sprite: AnimatedSprite2D = $Solar/Solar_Sprite
+@onready var door_1_sprite: AnimatedSprite2D = $Doors/Door_1/Door_1_Sprite
+@onready var door_2_sprite: AnimatedSprite2D = $Doors/Door_2/Door_2_Sprite
 
 var AME_Broken = false
 var Singulo_Broken = false
 var Solar_Broken = false
+var Door_1_Broken = false
+var Door_2_Broken = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,10 +35,20 @@ func _on_new_round() -> void:
 	if randi_range(1,2) == 2:
 		$Solar/Solar_Sprite.set_frame(1)
 		Solar_Broken = true
+	
+	if randi_range(1,2) == 2 and Door_1_Broken == false:
+		$Doors/Door_1/Door_1_Sprite.play("default")
+		Door_1_Broken = true
+		
+	if randi_range(1,2) == 2 and Door_2_Broken == false:
+		$Doors/Door_2/Door_2_Sprite.play("default")
+		Door_2_Broken = true
 
 var body_in_ame_area = false
 var body_in_singulo_area = false
 var body_in_solar_area = false
+var body_in_door_1_area = false
+var body_in_door_2_area = false
 
 # body entered
 
@@ -47,6 +61,12 @@ func _on_singulo_body_entered(body: Node2D) -> void:
 func _on_solar_body_entered(body: Node2D) -> void:
 	body_in_solar_area = true
 
+func _on_door_1_body_entered(body: Node2D) -> void:
+	body_in_door_1_area = true
+
+func _on_door_2_body_entered(body: Node2D) -> void:
+	body_in_door_2_area = true
+
 # body exited
 
 func _on_ame_body_exited(body: Node2D) -> void:
@@ -57,6 +77,12 @@ func _on_singulo_body_exited(body: Node2D) -> void:
 
 func _on_solar_body_exited(body: Node2D) -> void:
 	body_in_solar_area = false
+
+func _on_door_1_body_exited(body: Node2D) -> void:
+	body_in_door_1_area = false
+
+func _on_door_2_body_exited(body: Node2D) -> void:
+	body_in_door_2_area = false
 
 # process
 
@@ -70,6 +96,12 @@ func _process(delta: float) -> void:
 	if body_in_solar_area and Input.is_action_just_pressed("Interact") and Solar_Broken == true:
 		$Solar/Solar_Sprite.set_frame(0)
 		Solar_Broken = false
+	if body_in_door_1_area and Input.is_action_just_pressed("Interact") and Door_1_Broken == true:
+		$Doors/Door_1/Door_1_Sprite.play_backwards("default")
+		Door_1_Broken = false
+	if body_in_door_2_area and Input.is_action_just_pressed("Interact") and Door_2_Broken == true:
+		$Doors/Door_2/Door_2_Sprite.play_backwards("default")
+		Door_2_Broken = false
 
 #func _on_ame_body_entered(body: Node2D) -> void:
 	#print("entered")

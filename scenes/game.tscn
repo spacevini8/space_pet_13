@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://jx55wc0xyylt"]
+[gd_scene load_steps=40 format=3 uid="uid://jx55wc0xyylt"]
 
 [ext_resource type="PackedScene" uid="uid://dvexq3a6trjln" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://36cfiogx7i5k" path="res://assets/sprites/spacestationbackground.bmp" id="2_yqjtg"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://wp1ggpm32std" path="res://assets/sprites/Solar/solar_normal.bmp" id="8_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://bya0eranmmmyv" path="res://assets/sprites/Singulo/singulo_warning.bmp" id="9_dinhu"]
 [ext_resource type="Texture2D" uid="uid://bwntkk87jles0" path="res://assets/sprites/Solar/solar_warning.bmp" id="12_kvuet"]
+[ext_resource type="PackedScene" uid="uid://bw7fx8h4qck4k" path="res://scenes/Machines/doors.tscn" id="13_trtic"]
+[ext_resource type="Texture2D" uid="uid://dgojw2bbt0ien" path="res://assets/sprites/Doors/door_1.bmp" id="14_ir15t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_yqjtg")
@@ -108,6 +110,58 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ca42v"]
+atlas = ExtResource("14_ir15t")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rysoc"]
+atlas = ExtResource("14_ir15t")
+region = Rect2(224, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssvqc"]
+atlas = ExtResource("14_ir15t")
+region = Rect2(352, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_264po"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ca42v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rysoc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssvqc")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1kice"]
+size = Vector2(254, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5newe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ca42v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rysoc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssvqc")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_37s47"]
+size = Vector2(254, 256.5)
+
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
@@ -179,6 +233,30 @@ sprite_frames = SubResource("SpriteFrames_ca42v")
 [node name="Solar_Collider" type="CollisionPolygon2D" parent="Machines/Solar"]
 polygon = PackedVector2Array(-112, -96, 48, -96, 64, -88, 128, 64, 120, 96, -40, 96, -56, 88, -120, -88)
 
+[node name="Doors" type="Node" parent="Machines"]
+
+[node name="Door_1" parent="Machines/Doors" instance=ExtResource("13_trtic")]
+
+[node name="Door_1_Sprite" type="AnimatedSprite2D" parent="Machines/Doors/Door_1"]
+position = Vector2(128, 896)
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_264po")
+
+[node name="Door_1_collider" type="CollisionShape2D" parent="Machines/Doors/Door_1"]
+position = Vector2(127, 896)
+shape = SubResource("RectangleShape2D_1kice")
+
+[node name="Door_2" parent="Machines/Doors" instance=ExtResource("13_trtic")]
+
+[node name="Door_2_Sprite" type="AnimatedSprite2D" parent="Machines/Doors/Door_2"]
+position = Vector2(896, 896)
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_5newe")
+
+[node name="Door_2_collider" type="CollisionShape2D" parent="Machines/Doors/Door_2"]
+position = Vector2(897, 896.25)
+shape = SubResource("RectangleShape2D_37s47")
+
 [node name="Position_References" type="Node" parent="."]
 
 [node name="AmeNormal" type="Sprite2D" parent="Position_References"]
@@ -207,3 +285,7 @@ texture = ExtResource("8_0tnpc")
 [connection signal="body_exited" from="Machines/Singulo" to="Machines" method="_on_singulo_body_exited"]
 [connection signal="body_entered" from="Machines/Solar" to="Machines" method="_on_solar_body_entered"]
 [connection signal="body_exited" from="Machines/Solar" to="Machines" method="_on_solar_body_exited"]
+[connection signal="body_entered" from="Machines/Doors/Door_1" to="Machines" method="_on_door_1_body_entered"]
+[connection signal="body_exited" from="Machines/Doors/Door_1" to="Machines" method="_on_door_1_body_exited"]
+[connection signal="body_entered" from="Machines/Doors/Door_2" to="Machines" method="_on_door_2_body_entered"]
+[connection signal="body_exited" from="Machines/Doors/Door_2" to="Machines" method="_on_door_2_body_exited"]
