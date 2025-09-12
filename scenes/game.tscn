@@ -1,9 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://jx55wc0xyylt"]
+[gd_scene load_steps=10 format=3 uid="uid://jx55wc0xyylt"]
 
 [ext_resource type="PackedScene" uid="uid://dvexq3a6trjln" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Texture2D" uid="uid://36cfiogx7i5k" path="res://assets/sprites/spacestationbackground.bmp" id="2_yqjtg"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
+texture = ExtResource("2_yqjtg")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_uwrxv"]
 tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetAtlasSource_lnu2h")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yqjtg"]
 
@@ -16,10 +23,13 @@ normal = Vector2(-1, 0)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_iywne"]
 normal = Vector2(1, 0)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
+size = Vector2(1024, 187)
+
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(120, 896)
+position = Vector2(384, 888)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_uwrxv")
@@ -31,7 +41,7 @@ position = Vector2(97, 1025)
 shape = SubResource("WorldBoundaryShape2D_yqjtg")
 
 [node name="B_Top" type="CollisionShape2D" parent="Border"]
-position = Vector2(932, -1)
+position = Vector2(950, -258.5)
 shape = SubResource("WorldBoundaryShape2D_lnu2h")
 
 [node name="B_Right" type="CollisionShape2D" parent="Border"]
@@ -41,3 +51,16 @@ shape = SubResource("WorldBoundaryShape2D_lbhrr")
 [node name="B_Left" type="CollisionShape2D" parent="Border"]
 position = Vector2(-1, 929)
 shape = SubResource("WorldBoundaryShape2D_iywne")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(512, 512)
+scale = Vector2(8, 8)
+texture = ExtResource("2_yqjtg")
+
+[node name="New_Round" type="Area2D" parent="."]
+
+[node name="New_Round_Box" type="CollisionShape2D" parent="New_Round"]
+position = Vector2(512, -163.5)
+shape = SubResource("RectangleShape2D_yqjtg")
+
+[connection signal="body_entered" from="New_Round" to="Player" method="_on_new_round_body_entered"]
