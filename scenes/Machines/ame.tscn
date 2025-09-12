@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://cs0vv1xgxrogp"]
+
+[node name="AME" type="Area2D"]
+z_index = 1

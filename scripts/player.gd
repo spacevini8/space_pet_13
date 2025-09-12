@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+signal new_round
 
 const SPEED = 256.0
 const JUMP_VELOCITY = -400.0
@@ -37,3 +38,4 @@ func _physics_process(delta: float) -> void:
 
 func _on_new_round_body_entered(body: Node2D) -> void:
 	position.y += 1018
+	new_round.emit()

@@ -1,7 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://jx55wc0xyylt"]
+[gd_scene load_steps=31 format=3 uid="uid://jx55wc0xyylt"]
 
 [ext_resource type="PackedScene" uid="uid://dvexq3a6trjln" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://36cfiogx7i5k" path="res://assets/sprites/spacestationbackground.bmp" id="2_yqjtg"]
+[ext_resource type="Script" uid="uid://i2a17x23nmyc" path="res://scripts/machines.gd" id="3_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://cs0vv1xgxrogp" path="res://scenes/Machines/ame.tscn" id="3_lnu2h"]
+[ext_resource type="Texture2D" uid="uid://cukqcq7xgphbw" path="res://assets/sprites/AME/AME_normal.bmp" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://dv3ociia7h54o" path="res://scenes/Machines/singulo.tscn" id="4_p57ef"]
+[ext_resource type="PackedScene" uid="uid://ci6vnlpvygmta" path="res://scenes/Machines/solar.tscn" id="5_gee14"]
+[ext_resource type="Texture2D" uid="uid://drhfkrjj7guvg" path="res://assets/sprites/Singulo/singulo_normal.bmp" id="6_u5sy4"]
+[ext_resource type="Texture2D" uid="uid://brmel64wbwjob" path="res://assets/sprites/AME/AME_warning.bmp" id="6_vtaks"]
+[ext_resource type="Texture2D" uid="uid://wp1ggpm32std" path="res://assets/sprites/Solar/solar_normal.bmp" id="8_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://bya0eranmmmyv" path="res://assets/sprites/Singulo/singulo_warning.bmp" id="9_dinhu"]
+[ext_resource type="Texture2D" uid="uid://bwntkk87jles0" path="res://assets/sprites/Solar/solar_warning.bmp" id="12_kvuet"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_yqjtg")
@@ -25,6 +35,78 @@ normal = Vector2(1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
 size = Vector2(1024, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yh5cr"]
+atlas = ExtResource("4_lbhrr")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kd7uh"]
+atlas = ExtResource("6_vtaks")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvpfn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yh5cr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kd7uh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dinhu"]
+size = Vector2(202, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aq1i4"]
+atlas = ExtResource("6_u5sy4")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_583pg"]
+atlas = ExtResource("9_dinhu")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_trtic"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aq1i4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_583pg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ir15t"]
+size = Vector2(208, 208)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5w87"]
+atlas = ExtResource("8_0tnpc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4ge3"]
+atlas = ExtResource("12_kvuet")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ca42v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5w87")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4ge3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Game" type="Node2D"]
 
@@ -63,4 +145,59 @@ texture = ExtResource("2_yqjtg")
 position = Vector2(512, -163.5)
 shape = SubResource("RectangleShape2D_yqjtg")
 
+[node name="Machines" type="Node" parent="."]
+script = ExtResource("3_0tnpc")
+
+[node name="AME" parent="Machines" instance=ExtResource("3_lnu2h")]
+position = Vector2(128, 640)
+
+[node name="AME_Sprite" type="AnimatedSprite2D" parent="Machines/AME"]
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_kvpfn")
+
+[node name="AME_Collider" type="CollisionShape2D" parent="Machines/AME"]
+position = Vector2(-3, 0)
+shape = SubResource("RectangleShape2D_dinhu")
+
+[node name="Singulo" parent="Machines" instance=ExtResource("4_p57ef")]
+position = Vector2(128, 384)
+
+[node name="Singulo_Sprite" type="AnimatedSprite2D" parent="Machines/Singulo"]
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_trtic")
+
+[node name="Singulo_Collider" type="CollisionShape2D" parent="Machines/Singulo"]
+shape = SubResource("RectangleShape2D_ir15t")
+
+[node name="Solar" parent="Machines" instance=ExtResource("5_gee14")]
+position = Vector2(128, 128)
+
+[node name="Solar_Sprite" type="AnimatedSprite2D" parent="Machines/Solar"]
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_ca42v")
+
+[node name="Solar_Collider" type="CollisionPolygon2D" parent="Machines/Solar"]
+polygon = PackedVector2Array(-112, -96, 48, -96, 64, -88, 128, 64, 120, 96, -40, 96, -56, 88, -120, -88)
+
+[node name="Position_References" type="Node" parent="."]
+
+[node name="AmeNormal" type="Sprite2D" parent="Position_References"]
+visible = false
+position = Vector2(512, 512)
+scale = Vector2(8, 8)
+texture = ExtResource("4_lbhrr")
+
+[node name="SinguloNormal" type="Sprite2D" parent="Position_References"]
+visible = false
+position = Vector2(512, 512)
+scale = Vector2(8, 8)
+texture = ExtResource("6_u5sy4")
+
+[node name="SolarNormal" type="Sprite2D" parent="Position_References"]
+visible = false
+position = Vector2(512, 512)
+scale = Vector2(8, 8)
+texture = ExtResource("8_0tnpc")
+
+[connection signal="new_round" from="Player" to="Machines" method="_on_new_round"]
 [connection signal="body_entered" from="New_Round" to="Player" method="_on_new_round_body_entered"]

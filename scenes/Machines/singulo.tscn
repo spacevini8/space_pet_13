@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://dv3ociia7h54o"]
+
+[node name="Singulo" type="Area2D"]
+z_index = 1

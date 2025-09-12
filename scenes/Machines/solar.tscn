@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://ci6vnlpvygmta"]
+
+[node name="Solar" type="Area2D"]
+z_index = 1
