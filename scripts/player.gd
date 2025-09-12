@@ -5,6 +5,13 @@ signal new_round
 const SPEED = 256.0
 const JUMP_VELOCITY = -400.0
 
+var Menu_Open = false
+
+func _on_machines_menu_open() -> void:
+	Menu_Open = true
+	
+func _on_machines_menu_closed() -> void:
+	Menu_Open = false
 
 func _physics_process(delta: float) -> void: 
 	# Add the gravity.
@@ -12,15 +19,15 @@ func _physics_process(delta: float) -> void:
 		#velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("Up"):
+	if Input.is_action_just_pressed("Up") and Menu_Open == false:
 		#velocity.y = JUMP_VELOCITY
 		position.y += -1 * SPEED
 
-	if Input.is_action_just_pressed("Left"):
+	if Input.is_action_just_pressed("Left") and Menu_Open == false:
 		#velocity.y = JUMP_VELOCITY
 		position.x += -1 * SPEED
 		
-	if Input.is_action_just_pressed("Right"):
+	if Input.is_action_just_pressed("Right") and Menu_Open == false:
 		#velocity.y = JUMP_VELOCITY
 		position.x += 1 * SPEED
 		
