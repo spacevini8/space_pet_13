@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal new_round
+signal moved
 
 const SPEED = 256.0
 const JUMP_VELOCITY = -400.0
@@ -22,14 +23,17 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Up") and Menu_Open == false:
 		#velocity.y = JUMP_VELOCITY
 		position.y += -1 * SPEED
+		moved.emit()
 
 	if Input.is_action_just_pressed("Left") and Menu_Open == false:
 		#velocity.y = JUMP_VELOCITY
 		position.x += -1 * SPEED
+		moved.emit()
 		
 	if Input.is_action_just_pressed("Right") and Menu_Open == false:
 		#velocity.y = JUMP_VELOCITY
 		position.x += 1 * SPEED
+		moved.emit()
 		
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

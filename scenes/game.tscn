@@ -1,5 +1,6 @@
-[gd_scene load_steps=49 format=3 uid="uid://jx55wc0xyylt"]
+[gd_scene load_steps=56 format=3 uid="uid://jx55wc0xyylt"]
 
+[ext_resource type="Script" uid="uid://bw6ha80c1xul1" path="res://scripts/game.gd" id="1_rysoc"]
 [ext_resource type="PackedScene" uid="uid://dvexq3a6trjln" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://bu6630sdsnl2e" path="res://assets/sprites/UI/Menus.bmp" id="2_ir15t"]
 [ext_resource type="Texture2D" uid="uid://36cfiogx7i5k" path="res://assets/sprites/spacestationbackground.bmp" id="2_yqjtg"]
@@ -15,6 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://bwntkk87jles0" path="res://assets/sprites/Solar/solar_warning.bmp" id="12_kvuet"]
 [ext_resource type="PackedScene" uid="uid://bw7fx8h4qck4k" path="res://scenes/Machines/doors.tscn" id="13_trtic"]
 [ext_resource type="Texture2D" uid="uid://dgojw2bbt0ien" path="res://assets/sprites/Doors/door_1.bmp" id="14_ir15t"]
+[ext_resource type="FontFile" uid="uid://bn8cenhd3jlyg" path="res://assets/fonts/DepartureMono-Regular.otf" id="16_ca42v"]
+[ext_resource type="PackedScene" uid="uid://n4fhyiony73y" path="res://scenes/Machines/food.tscn" id="17_264po"]
+[ext_resource type="Texture2D" uid="uid://dqiekqcbbfg2f" path="res://assets/sprites/food_dispenser.bmp" id="18_1kice"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_264po"]
 atlas = ExtResource("2_ir15t")
@@ -96,6 +100,58 @@ normal = Vector2(1, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
 size = Vector2(1024, 187)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ca42v"]
+atlas = ExtResource("14_ir15t")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rysoc"]
+atlas = ExtResource("14_ir15t")
+region = Rect2(224, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssvqc"]
+atlas = ExtResource("14_ir15t")
+region = Rect2(352, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_264po"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ca42v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rysoc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssvqc")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1kice"]
+size = Vector2(254, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5newe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ca42v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rysoc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssvqc")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_37s47"]
+size = Vector2(254, 256.5)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_yh5cr"]
 atlas = ExtResource("4_lbhrr")
 region = Rect2(0, 64, 32, 32)
@@ -168,59 +224,26 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ca42v"]
-atlas = ExtResource("14_ir15t")
-region = Rect2(96, 96, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhx41"]
+atlas = ExtResource("18_1kice")
+region = Rect2(96, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rysoc"]
-atlas = ExtResource("14_ir15t")
-region = Rect2(224, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ssvqc"]
-atlas = ExtResource("14_ir15t")
-region = Rect2(352, 96, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_264po"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_qnb83"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ca42v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rysoc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ssvqc")
+"texture": SubResource("AtlasTexture_bhx41")
 }],
-"loop": false,
+"loop": true,
 "name": &"default",
-"speed": 10.0
+"speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1kice"]
-size = Vector2(254, 256)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_5newe"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ca42v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rysoc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ssvqc")
-}],
-"loop": false,
-"name": &"default",
-"speed": 10.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_37s47"]
-size = Vector2(254, 256.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sww3w"]
+size = Vector2(208, 192)
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_rysoc")
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
 position = Vector2(384, 888)
@@ -267,6 +290,30 @@ shape = SubResource("RectangleShape2D_yqjtg")
 [node name="Machines" type="Node" parent="."]
 script = ExtResource("3_0tnpc")
 
+[node name="Doors" type="Node" parent="Machines"]
+
+[node name="Door_1" parent="Machines/Doors" instance=ExtResource("13_trtic")]
+
+[node name="Door_1_Sprite" type="AnimatedSprite2D" parent="Machines/Doors/Door_1"]
+position = Vector2(128, 896)
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_264po")
+
+[node name="Door_1_collider" type="CollisionShape2D" parent="Machines/Doors/Door_1"]
+position = Vector2(127, 896)
+shape = SubResource("RectangleShape2D_1kice")
+
+[node name="Door_2" parent="Machines/Doors" instance=ExtResource("13_trtic")]
+
+[node name="Door_2_Sprite" type="AnimatedSprite2D" parent="Machines/Doors/Door_2"]
+position = Vector2(896, 896)
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_5newe")
+
+[node name="Door_2_collider" type="CollisionShape2D" parent="Machines/Doors/Door_2"]
+position = Vector2(897, 896.25)
+shape = SubResource("RectangleShape2D_37s47")
+
 [node name="AME" parent="Machines" instance=ExtResource("3_lnu2h")]
 position = Vector2(128, 640)
 
@@ -298,29 +345,16 @@ sprite_frames = SubResource("SpriteFrames_ca42v")
 [node name="Solar_Collider" type="CollisionPolygon2D" parent="Machines/Solar"]
 polygon = PackedVector2Array(-112, -96, 48, -96, 64, -88, 128, 64, 120, 96, -40, 96, -56, 88, -120, -88)
 
-[node name="Doors" type="Node" parent="Machines"]
+[node name="Food" parent="Machines" instance=ExtResource("17_264po")]
 
-[node name="Door_1" parent="Machines/Doors" instance=ExtResource("13_trtic")]
-
-[node name="Door_1_Sprite" type="AnimatedSprite2D" parent="Machines/Doors/Door_1"]
-position = Vector2(128, 896)
+[node name="Food_Sprite" type="AnimatedSprite2D" parent="Machines/Food"]
+position = Vector2(896, 640)
 scale = Vector2(8, 8)
-sprite_frames = SubResource("SpriteFrames_264po")
+sprite_frames = SubResource("SpriteFrames_qnb83")
 
-[node name="Door_1_collider" type="CollisionShape2D" parent="Machines/Doors/Door_1"]
-position = Vector2(127, 896)
-shape = SubResource("RectangleShape2D_1kice")
-
-[node name="Door_2" parent="Machines/Doors" instance=ExtResource("13_trtic")]
-
-[node name="Door_2_Sprite" type="AnimatedSprite2D" parent="Machines/Doors/Door_2"]
-position = Vector2(896, 896)
-scale = Vector2(8, 8)
-sprite_frames = SubResource("SpriteFrames_5newe")
-
-[node name="Door_2_collider" type="CollisionShape2D" parent="Machines/Doors/Door_2"]
-position = Vector2(897, 896.25)
-shape = SubResource("RectangleShape2D_37s47")
+[node name="Food_Collider" type="CollisionShape2D" parent="Machines/Food"]
+position = Vector2(912, 640)
+shape = SubResource("RectangleShape2D_sww3w")
 
 [node name="Position_References" type="Node" parent="."]
 
@@ -342,17 +376,42 @@ position = Vector2(512, 512)
 scale = Vector2(8, 8)
 texture = ExtResource("8_0tnpc")
 
+[node name="FoodDispenser" type="Sprite2D" parent="Position_References"]
+visible = false
+position = Vector2(512, 512)
+scale = Vector2(8, 8)
+texture = ExtResource("18_1kice")
+
+[node name="Text" type="Node" parent="."]
+
+[node name="Stats" type="Label" parent="Text"]
+offset_left = 264.0
+offset_right = 803.0
+offset_bottom = 504.0
+theme_override_fonts/font = ExtResource("16_ca42v")
+theme_override_font_sizes/font_size = 97
+text = "Score: 0
+Hunger: 0
+Income: 0
+Round:0"
+
+[connection signal="moved" from="Player" to="." method="_on_player_moved"]
+[connection signal="new_round" from="Player" to="." method="_on_player_new_round"]
 [connection signal="new_round" from="Player" to="Machines" method="_on_new_round"]
 [connection signal="body_entered" from="New_Round" to="Player" method="_on_new_round_body_entered"]
+[connection signal="Broken" from="Machines" to="." method="_on_machines_broken"]
+[connection signal="Eat" from="Machines" to="." method="_on_machines_eat"]
+[connection signal="Fixed" from="Machines" to="." method="_on_machines_fixed"]
 [connection signal="Menu_Closed" from="Machines" to="Player" method="_on_machines_menu_closed"]
 [connection signal="Menu_Open" from="Machines" to="Player" method="_on_machines_menu_open"]
+[connection signal="body_entered" from="Machines/Doors/Door_1" to="Machines" method="_on_door_1_body_entered"]
+[connection signal="body_exited" from="Machines/Doors/Door_1" to="Machines" method="_on_door_1_body_exited"]
+[connection signal="body_entered" from="Machines/Doors/Door_2" to="Machines" method="_on_door_2_body_entered"]
+[connection signal="body_exited" from="Machines/Doors/Door_2" to="Machines" method="_on_door_2_body_exited"]
 [connection signal="body_entered" from="Machines/AME" to="Machines" method="_on_ame_body_entered"]
 [connection signal="body_exited" from="Machines/AME" to="Machines" method="_on_ame_body_exited"]
 [connection signal="body_entered" from="Machines/Singulo" to="Machines" method="_on_singulo_body_entered"]
 [connection signal="body_exited" from="Machines/Singulo" to="Machines" method="_on_singulo_body_exited"]
 [connection signal="body_entered" from="Machines/Solar" to="Machines" method="_on_solar_body_entered"]
 [connection signal="body_exited" from="Machines/Solar" to="Machines" method="_on_solar_body_exited"]
-[connection signal="body_entered" from="Machines/Doors/Door_1" to="Machines" method="_on_door_1_body_entered"]
-[connection signal="body_exited" from="Machines/Doors/Door_1" to="Machines" method="_on_door_1_body_exited"]
-[connection signal="body_entered" from="Machines/Doors/Door_2" to="Machines" method="_on_door_2_body_entered"]
-[connection signal="body_exited" from="Machines/Doors/Door_2" to="Machines" method="_on_door_2_body_exited"]
+[connection signal="body_entered" from="Machines/Food" to="Machines" method="_on_food_body_entered"]
