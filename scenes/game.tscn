@@ -395,6 +395,7 @@ Hunger: 0
 Income: 0
 Round:0"
 
+[connection signal="Game_Over" from="." to="Player" method="_on_game_game_over"]
 [connection signal="moved" from="Player" to="." method="_on_player_moved"]
 [connection signal="new_round" from="Player" to="." method="_on_player_new_round"]
 [connection signal="new_round" from="Player" to="Machines" method="_on_new_round"]

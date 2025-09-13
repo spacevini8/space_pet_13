@@ -38,17 +38,17 @@ func _on_new_round() -> void:
 	
 	Ate = false
 	
-	if randi_range(1,2) == 2:
+	if randi_range(1,2) == 2 and AME_Broken == false:
 		$AME/AME_Sprite.set_frame(1)
 		AME_Broken = true
 		Broken.emit()
 		
-	if randi_range(1,2) == 2:
+	if randi_range(1,2) == 2 and Singulo_Broken == false:
 		$Singulo/Singulo_Sprite.set_frame(1)
 		Singulo_Broken = true
 		Broken.emit()
 		
-	if randi_range(1,2) == 2:
+	if randi_range(1,2) == 2 and Solar_Broken == false:
 		$Solar/Solar_Sprite.set_frame(1)
 		Solar_Broken = true
 		Broken.emit()

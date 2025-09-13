@@ -6,13 +6,22 @@ signal moved
 const SPEED = 256.0
 const JUMP_VELOCITY = -400.0
 
+var Pause = false
+
 var Menu_Open = false
+var Game_Over = false
+
+func _on_game_game_over() -> void:
+	Game_Over = true
+	Pause = true
 
 func _on_machines_menu_open() -> void:
 	Menu_Open = true
+	Pause = true
 	
 func _on_machines_menu_closed() -> void:
 	Menu_Open = false
+	Pause = false
 
 func _physics_process(delta: float) -> void: 
 	# Add the gravity.
@@ -20,17 +29,17 @@ func _physics_process(delta: float) -> void:
 		#velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("Up") and Menu_Open == false:
+	if Input.is_action_just_pressed("Up") and Pause == false:
 		#velocity.y = JUMP_VELOCITY
 		position.y += -1 * SPEED
 		moved.emit()
 
-	if Input.is_action_just_pressed("Left") and Menu_Open == false:
+	if Input.is_action_just_pressed("Left") and Pause == false:
 		#velocity.y = JUMP_VELOCITY
 		position.x += -1 * SPEED
 		moved.emit()
 		
-	if Input.is_action_just_pressed("Right") and Menu_Open == false:
+	if Input.is_action_just_pressed("Right") and Pause == false:
 		#velocity.y = JUMP_VELOCITY
 		position.x += 1 * SPEED
 		moved.emit()
