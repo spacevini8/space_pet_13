@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://dvexq3a6trjln"]
+[gd_scene load_steps=15 format=3 uid="uid://dvexq3a6trjln"]
 
 [ext_resource type="Texture2D" uid="uid://bef7g8ck71av6" path="res://assets/sprites/erebus_sheet.bmp" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://8go7qq4otkln" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="AudioStream" uid="uid://j15gt15slyo3" path="res://assets/sounds/moth_scream.ogg" id="3_qhqgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("1_3vyb7")
@@ -82,10 +83,16 @@ height = 258.0
 z_index = 5
 script = ExtResource("1_g2els")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Player_Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_d2wvv")
 autoplay = "default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Player_Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_g2els")
+
+[node name="Scream" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_qhqgy")
+bus = &"SFX"
+
+[connection signal="finished" from="Scream" to="." method="_on_scream_finished"]

@@ -12,6 +12,7 @@ signal Fixed
 @onready var door_1_sprite: AnimatedSprite2D = $Doors/Door_1/Door_1_Sprite
 @onready var door_2_sprite: AnimatedSprite2D = $Doors/Door_2/Door_2_Sprite
 @onready var menus: AnimatedSprite2D = $"../Menus"
+@onready var multitool: AudioStreamPlayer2D = $Multitool
 
 var AME_Broken = false
 var Singulo_Broken = false
@@ -29,6 +30,7 @@ func _ready() -> void:
 #func _process(delta: float) -> void:
 	#pass
 
+@warning_ignore("unused_parameter")
 func _on_food_body_entered(body: Node2D) -> void:
 	if Ate == false:
 		Eat.emit()
@@ -71,6 +73,7 @@ var body_in_door_2_area = false
 
 # body entered
 
+@warning_ignore("unused_parameter")
 func _on_ame_body_entered(body: Node2D) -> void:
 	body_in_ame_area = true
 	if AME_Broken == true:
@@ -78,6 +81,7 @@ func _on_ame_body_entered(body: Node2D) -> void:
 		$"../Menus".visible = true
 		$"../Menus".set_frame(3)
 
+@warning_ignore("unused_parameter")
 func _on_singulo_body_entered(body: Node2D) -> void:
 	body_in_singulo_area = true
 	if Singulo_Broken == true:
@@ -85,6 +89,7 @@ func _on_singulo_body_entered(body: Node2D) -> void:
 		$"../Menus".visible = true
 		$"../Menus".set_frame(2)
 
+@warning_ignore("unused_parameter")
 func _on_solar_body_entered(body: Node2D) -> void:
 	body_in_solar_area = true
 	if Solar_Broken == true:
@@ -92,6 +97,7 @@ func _on_solar_body_entered(body: Node2D) -> void:
 		$"../Menus".visible = true
 		$"../Menus".set_frame(1)
 
+@warning_ignore("unused_parameter")
 func _on_door_1_body_entered(body: Node2D) -> void:
 	body_in_door_1_area = true
 	if Door_1_Broken == true:
@@ -99,6 +105,7 @@ func _on_door_1_body_entered(body: Node2D) -> void:
 		$"../Menus".visible = true
 		$"../Menus".set_frame(4)
 
+@warning_ignore("unused_parameter")
 func _on_door_2_body_entered(body: Node2D) -> void:
 	body_in_door_2_area = true
 	if Door_2_Broken == true:
@@ -108,53 +115,64 @@ func _on_door_2_body_entered(body: Node2D) -> void:
 
 # body exited
 
+@warning_ignore("unused_parameter")
 func _on_ame_body_exited(body: Node2D) -> void:
 	body_in_ame_area = false
 
+@warning_ignore("unused_parameter")
 func _on_singulo_body_exited(body: Node2D) -> void:
 	body_in_singulo_area = false
 
+@warning_ignore("unused_parameter")
 func _on_solar_body_exited(body: Node2D) -> void:
 	body_in_solar_area = false
 
+@warning_ignore("unused_parameter")
 func _on_door_1_body_exited(body: Node2D) -> void:
 	body_in_door_1_area = false
 
+@warning_ignore("unused_parameter")
 func _on_door_2_body_exited(body: Node2D) -> void:
 	body_in_door_2_area = false
 
 # process
 
+@warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
 	if body_in_ame_area and Input.is_action_just_pressed("Interact") and AME_Broken == true:
 		$AME/AME_Sprite.set_frame(0)
 		Menu_Closed.emit()
 		$"../Menus".visible = false
 		AME_Broken = false
+		$Multitool.play()
 		Fixed.emit()
 	if body_in_singulo_area and Input.is_action_just_pressed("Interact") and Singulo_Broken == true:
 		$Singulo/Singulo_Sprite.set_frame(0)
 		Menu_Closed.emit()
 		$"../Menus".visible = false
 		Singulo_Broken = false
+		$Multitool.play()
 		Fixed.emit()
 	if body_in_solar_area and Input.is_action_just_pressed("Interact") and Solar_Broken == true:
 		$Solar/Solar_Sprite.set_frame(0)
 		Menu_Closed.emit()
 		$"../Menus".visible = false
 		Solar_Broken = false
+		$Multitool.play()
 		Fixed.emit()
 	if body_in_door_1_area and Input.is_action_just_pressed("Interact") and Door_1_Broken == true:
 		$Doors/Door_1/Door_1_Sprite.play_backwards("default")
 		Menu_Closed.emit()
 		$"../Menus".visible = false
 		Door_1_Broken = false
+		$Multitool.play()
 		Fixed.emit()
 	if body_in_door_2_area and Input.is_action_just_pressed("Interact") and Door_2_Broken == true:
 		$Doors/Door_2/Door_2_Sprite.play_backwards("default")
 		Menu_Closed.emit()
 		$"../Menus".visible = false
 		Door_2_Broken = false
+		$Multitool.play()
 		Fixed.emit()
 
 #func _on_ame_body_entered(body: Node2D) -> void:

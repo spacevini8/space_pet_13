@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://jx55wc0xyylt"]
+[gd_scene load_steps=86 format=3 uid="uid://jx55wc0xyylt"]
 
 [ext_resource type="Script" uid="uid://bw6ha80c1xul1" path="res://scripts/game.gd" id="1_rysoc"]
 [ext_resource type="PackedScene" uid="uid://dvexq3a6trjln" path="res://scenes/player.tscn" id="1_uwrxv"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://cukqcq7xgphbw" path="res://assets/sprites/AME/AME_normal.bmp" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://dv3ociia7h54o" path="res://scenes/Machines/singulo.tscn" id="4_p57ef"]
 [ext_resource type="PackedScene" uid="uid://ci6vnlpvygmta" path="res://scenes/Machines/solar.tscn" id="5_gee14"]
+[ext_resource type="Texture2D" uid="uid://deqy3gonyx12k" path="res://assets/sprites/dot.png" id="5_pr1ej"]
+[ext_resource type="Script" uid="uid://b5ovyix0ak7uh" path="res://scripts/music_control.gd" id="6_05nbr"]
 [ext_resource type="Texture2D" uid="uid://drhfkrjj7guvg" path="res://assets/sprites/Singulo/singulo_normal.bmp" id="6_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://brmel64wbwjob" path="res://assets/sprites/AME/AME_warning.bmp" id="6_vtaks"]
 [ext_resource type="Texture2D" uid="uid://wp1ggpm32std" path="res://assets/sprites/Solar/solar_normal.bmp" id="8_0tnpc"]
@@ -19,6 +21,28 @@
 [ext_resource type="FontFile" uid="uid://bn8cenhd3jlyg" path="res://assets/fonts/DepartureMono-Regular.otf" id="16_ca42v"]
 [ext_resource type="PackedScene" uid="uid://n4fhyiony73y" path="res://scenes/Machines/food.tscn" id="17_264po"]
 [ext_resource type="Texture2D" uid="uid://dqiekqcbbfg2f" path="res://assets/sprites/food_dispenser.bmp" id="18_1kice"]
+[ext_resource type="AudioStream" uid="uid://dfqtbm7ehog0j" path="res://assets/sounds/multitool_pulse.ogg" id="19_1kice"]
+[ext_resource type="AudioStream" uid="uid://gs3ol1upwrpa" path="res://assets/music/absconditus.ogg" id="21_8ool0"]
+[ext_resource type="AudioStream" uid="uid://461yg8vhnf05" path="res://assets/music/atomicamnesiammx.ogg" id="22_pr1ej"]
+[ext_resource type="AudioStream" uid="uid://j7x11daycmc2" path="res://assets/music/pwmur.ogg" id="23_05nbr"]
+[ext_resource type="AudioStream" uid="uid://ccn4281gyjhi5" path="res://assets/music/sector11.ogg" id="24_0sl42"]
+[ext_resource type="AudioStream" uid="uid://metif7dca4a7" path="res://assets/music/singuloose.ogg" id="25_oaba0"]
+[ext_resource type="AudioStream" uid="uid://qid0r2k2m4ai" path="res://assets/music/space_asshole.ogg" id="26_458eo"]
+[ext_resource type="AudioStream" uid="uid://cx24nyod2vytu" path="res://assets/music/Spac_Stac.ogg" id="27_h3rex"]
+[ext_resource type="AudioStream" uid="uid://bq4vo48vajsrs" path="res://assets/music/starlight.ogg" id="28_fedci"]
+[ext_resource type="AudioStream" uid="uid://c7wvi4jhjrerj" path="res://assets/music/sunset.ogg" id="29_8qswn"]
+[ext_resource type="AudioStream" uid="uid://mugkjrfsxxqa" path="res://assets/music/the_wizard.ogg" id="30_rm0al"]
+[ext_resource type="AudioStream" uid="uid://b6cexgp7yf3bp" path="res://assets/music/thunderdome.ogg" id="31_i4re6"]
+[ext_resource type="AudioStream" uid="uid://cvq7fhpj6al38" path="res://assets/music/title2.ogg" id="32_pf7vy"]
+[ext_resource type="AudioStream" uid="uid://2u7obg2bnv5s" path="res://assets/music/comet_haley.ogg" id="33_o8ni1"]
+[ext_resource type="AudioStream" uid="uid://c7fy03vh3ptwo" path="res://assets/music/title3.ogg" id="34_3hbvx"]
+[ext_resource type="AudioStream" uid="uid://qph4t66wu85p" path="res://assets/music/constellations.ogg" id="35_q8j3a"]
+[ext_resource type="AudioStream" uid="uid://cx8lyiyb0ncrm" path="res://assets/music/drifting.ogg" id="36_ms3bu"]
+[ext_resource type="AudioStream" uid="uid://cmimr6syumioe" path="res://assets/music/endless_space.ogg" id="37_7ixpq"]
+[ext_resource type="AudioStream" uid="uid://yllxgililtqr" path="res://assets/music/every_light_is_blinking_at_once.ogg" id="38_bk1p3"]
+[ext_resource type="AudioStream" uid="uid://cuhl11drsgay3" path="res://assets/music/flip-flap.ogg" id="39_n8ral"]
+[ext_resource type="AudioStream" uid="uid://bwsipykpc6qb4" path="res://assets/music/lasers_rip_apart_the_bulkhead.ogg" id="40_yd4ix"]
+[ext_resource type="AudioStream" uid="uid://t3qskycq8te4" path="res://assets/music/mod.flip-flap.ogg" id="41_66xif"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_264po"]
 atlas = ExtResource("2_ir15t")
@@ -76,6 +100,29 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ool0"]
+draw_center = false
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_8ool0"]
+color = Color(1, 1, 1, 1)
+thickness = 2
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_pr1ej"]
+color = Color(0, 0, 1, 1)
+thickness = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_05nbr"]
+bg_color = Color(0.4117647, 0.41568628, 0.41568628, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 2
+shadow_offset = Vector2(1, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_05nbr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_yqjtg")
@@ -242,6 +289,31 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sww3w"]
 size = Vector2(208, 192)
 
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_bnuda"]
+shuffle = true
+stream_count = 21
+stream_0 = ExtResource("21_8ool0")
+stream_1 = ExtResource("22_pr1ej")
+stream_2 = ExtResource("33_o8ni1")
+stream_3 = ExtResource("35_q8j3a")
+stream_4 = ExtResource("36_ms3bu")
+stream_5 = ExtResource("37_7ixpq")
+stream_6 = ExtResource("38_bk1p3")
+stream_7 = ExtResource("39_n8ral")
+stream_8 = ExtResource("40_yd4ix")
+stream_9 = ExtResource("41_66xif")
+stream_10 = ExtResource("23_05nbr")
+stream_11 = ExtResource("24_0sl42")
+stream_12 = ExtResource("25_oaba0")
+stream_13 = ExtResource("26_458eo")
+stream_14 = ExtResource("27_h3rex")
+stream_15 = ExtResource("28_fedci")
+stream_16 = ExtResource("29_8qswn")
+stream_17 = ExtResource("30_rm0al")
+stream_18 = ExtResource("31_i4re6")
+stream_19 = ExtResource("32_pf7vy")
+stream_20 = ExtResource("34_3hbvx")
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_rysoc")
 
@@ -254,6 +326,109 @@ z_index = 5
 position = Vector2(512, 512)
 scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_bhx41")
+
+[node name="Options" type="Panel" parent="Menus"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -125.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8ool0")
+
+[node name="Options" type="Label" parent="Menus/Options"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -0.875
+offset_bottom = 27.125
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("16_ca42v")
+theme_override_font_sizes/font_size = 22
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Music_Volume" type="Label" parent="Menus/Options"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 11.375
+offset_top = 27.625
+offset_right = -26.625
+offset_bottom = 46.625
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("16_ca42v")
+theme_override_font_sizes/font_size = 11
+text = "Music volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Music_Control" type="HSlider" parent="Menus/Options"]
+layout_mode = 0
+offset_left = 13.125
+offset_top = 30.875
+offset_right = 108.875
+offset_bottom = 62.875
+theme_override_constants/center_grabber = 1
+theme_override_icons/grabber = ExtResource("5_pr1ej")
+theme_override_icons/grabber_highlight = ExtResource("5_pr1ej")
+theme_override_styles/slider = SubResource("StyleBoxLine_8ool0")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_pr1ej")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_pr1ej")
+max_value = 1.0
+step = 0.05
+value = 1.0
+ticks_position = 3
+script = ExtResource("6_05nbr")
+Audio_Bus_Name = "Music"
+
+[node name="Quit" type="Button" parent="Menus/Options"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -29.375
+offset_top = -27.875
+offset_right = 29.375
+offset_bottom = -5.875
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("16_ca42v")
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxFlat_05nbr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_05nbr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_05nbr")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_05nbr")
+theme_override_styles/focus = SubResource("StyleBoxFlat_05nbr")
+text = "quit"
+
+[node name="SFX" type="CheckButton" parent="Menus/Options"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -7.125
+offset_right = 45.0
+offset_bottom = 28.875
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("16_ca42v")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/focus = SubResource("StyleBoxEmpty_05nbr")
+button_pressed = true
+text = "SFX"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_uwrxv")
@@ -356,6 +531,11 @@ sprite_frames = SubResource("SpriteFrames_qnb83")
 position = Vector2(912, 640)
 shape = SubResource("RectangleShape2D_sww3w")
 
+[node name="Multitool" type="AudioStreamPlayer2D" parent="Machines"]
+stream = ExtResource("19_1kice")
+volume_db = 5.0
+bus = &"SFX"
+
 [node name="Position_References" type="Node" parent="."]
 
 [node name="AmeNormal" type="Sprite2D" parent="Position_References"]
@@ -395,10 +575,20 @@ Hunger: 0
 Income: 0
 Round:0"
 
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamPlaylist_bnuda")
+bus = &"Music"
+
 [connection signal="Game_Over" from="." to="Player" method="_on_game_game_over"]
+[connection signal="Menu_Closed" from="." to="Player" method="_on_game_menu_closed"]
+[connection signal="Menu_Open" from="." to="Player" method="_on_game_menu_open"]
 [connection signal="moved" from="Player" to="." method="_on_player_moved"]
 [connection signal="new_round" from="Player" to="." method="_on_player_new_round"]
 [connection signal="new_round" from="Player" to="Machines" method="_on_new_round"]
+[connection signal="scream_finished" from="Player" to="." method="_on_player_scream_finished"]
+[connection signal="value_changed" from="Menus/Options/Music_Control" to="Menus/Options/Music_Control" method="_on_value_changed"]
+[connection signal="pressed" from="Menus/Options/Quit" to="." method="_on_quit_pressed"]
+[connection signal="toggled" from="Menus/Options/SFX" to="." method="_on_sfx_toggled"]
 [connection signal="body_entered" from="New_Round" to="Player" method="_on_new_round_body_entered"]
 [connection signal="Broken" from="Machines" to="." method="_on_machines_broken"]
 [connection signal="Eat" from="Machines" to="." method="_on_machines_eat"]
